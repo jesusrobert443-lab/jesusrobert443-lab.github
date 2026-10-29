@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tubemakers Records</title>
+<style>
+:root{--bg:#0e0712;--card:#1a1022;--line:#2e1d3d;--txt:#fff4ee;--dim:#c3a9bd;--a:#ff8a3d;--b:#ff3d81;--c:#8b5cff;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(900px 600px at 0% -10%,rgba(255,61,129,.30),transparent),radial-gradient(900px 600px at 100% 10%,rgba(139,92,255,.28),transparent),radial-gradient(800px 500px at 50% 110%,rgba(255,138,61,.20),transparent),var(--bg);color:var(--txt);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55;padding-bottom:110px;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+body:not(.owner) .own{display:none!important}
+.w{max-width:1100px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:0;z-index:20;backdrop-filter:blur(12px);background:rgba(14,7,18,.72);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:10px;height:62px}
+.logo{font-weight:800;letter-spacing:.5px;font-size:1.1rem;display:flex;align-items:center;gap:10px}
+.logo i{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--a),var(--b));display:grid;place-items:center;color:#fff;font-style:normal;box-shadow:0 0 18px rgba(255,61,129,.6)}
+.sp{flex:1}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer;background:linear-gradient(90deg,var(--a),var(--b));color:#fff;box-shadow:0 6px 22px rgba(255,61,129,.35);transition:.15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sec{background:rgba(255,255,255,.07);color:var(--txt);border:1px solid var(--line);box-shadow:none}
+.btn.sm{padding:8px 14px;font-size:.85rem}
+.tick{overflow:hidden;white-space:nowrap;background:linear-gradient(90deg,var(--b),var(--c));padding:8px 0;font-weight:800;letter-spacing:.12em;font-size:.82rem}
+.tick div{display:inline-block;animation:mq 26s linear infinite;padding-left:100%}
+.tick:hover div{animation-play-state:paused}
+@keyframes mq{to{transform:translateX(-100%)}}
+.hero{position:relative;padding:40px 0 14px;text-align:center}
+.notes span{position:absolute;bottom:0;font-size:1.6rem;opacity:0;animation:up 7s linear infinite;color:var(--a)}
+@keyframes up{0%{transform:translateY(0) rotate(0);opacity:0}15%{opacity:.8}100%{transform:translateY(-340px) rotate(40deg);opacity:0}}
+.avw{position:relative;width:170px;height:170px;margin:0 auto 18px}
+.avw::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(var(--a),var(--b),var(--c),var(--a));animation:spin 5s linear infinite}
+.avw::after{content:"";position:absolute;inset:-18px;border-radius:50%;box-shadow:0 0 50px rgba(255,61,129,.55);animation:pulse 1.6s ease-in-out infinite}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{transform:scale(1.07);opacity:.6}}
+.ava{position:absolute;inset:0;border-radius:50%;background:linear-gradient(135deg,#2a1240,#4a1a5c);display:grid;place-items:center;font-size:4.2rem;overflow:hidden;z-index:2;border:5px solid var(--bg)}
+.ava img{width:100%;height:100%;object-fit:cover}
+.ava em{font-style:normal;animation:bob 1.2s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-8px) scale(1.08)}}
+.camb{position:absolute;right:0;bottom:6px;z-index:3;width:38px;height:38px;border-radius:50%;border:0;background:#fff;color:#000;cursor:pointer;font-size:1.1rem}
+.eq{display:flex;gap:4px;justify-content:center;align-items:flex-end;height:36px;margin:0 auto 12px}
+.eq i{width:6px;border-radius:3px;background:linear-gradient(var(--a),var(--b));animation:eq 1s ease-in-out infinite}
+@keyframes eq{0%,100%{height:15%}50%{height:100%}}
+.hero h1{font-size:clamp(2.1rem,6.5vw,3.8rem);line-height:1.08;margin:0 0 18px;background:linear-gradient(90deg,#fff,var(--a) 40%,var(--b) 70%,var(--c));background-size:200% auto;animation:sh 6s linear infinite;-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes sh{to{background-position:200% center}}
+.bigplay{width:78px;height:78px;border-radius:50%;border:0;background:#fff;color:var(--b);font-size:2rem;cursor:pointer;box-shadow:0 0 0 8px rgba(255,255,255,.12),0 10px 34px rgba(255,61,129,.5);transition:.2s}
+.bigplay:hover{transform:scale(1.08)}
+.hr{display:flex;align-items:center;gap:10px;margin:34px 0 14px}
+h2{font-size:1.55rem;margin:0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:var(--b);box-shadow:0 10px 30px rgba(255,61,129,.2)}
+.card.now{border-color:var(--a);box-shadow:0 0 0 2px var(--a)}
+.cov{position:relative;aspect-ratio:1/1;background:linear-gradient(135deg,var(--c),var(--b),var(--a));display:grid;place-items:center;font-size:4.2rem}
+.cov img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.play{position:absolute;right:12px;bottom:12px;width:56px;height:56px;border-radius:50%;border:0;background:#fff;color:var(--b);font-size:1.3rem;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.5)}
+.del{position:absolute;left:10px;top:10px;border:0;border-radius:10px;background:rgba(0,0,0,.6);color:#fff;padding:6px 9px;cursor:pointer}
+.info{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px}
+.info h4{margin:0;font-size:1.12rem}
+.sty{font-size:.78rem;color:var(--dim)}
+details{font-size:.9rem;color:var(--dim)}
+summary{cursor:pointer;color:var(--a);font-weight:700}
+.lyr{white-space:pre-wrap;margin-top:8px;max-height:280px;overflow:auto;color:var(--txt);line-height:1.6}
+.empty{grid-column:1/-1;text-align:center;color:var(--dim);padding:40px 10px;border:2px dashed var(--line);border-radius:20px}
+footer{margin-top:40px;padding:24px 0;text-align:center;color:var(--dim);font-size:.85rem;border-top:1px solid var(--line)}
+.fab{position:fixed;right:16px;bottom:96px;z-index:25;padding:14px 20px;font-size:1rem}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:rgba(18,9,24,.96);backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));display:none}
+#bar.on{display:block}.pl{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.pl .t{min-width:0;flex:0 1 220px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pl input[type=range]{flex:1;accent-color:var(--b)}
+.pl .tm{font-size:.8rem;color:var(--dim);width:92px;text-align:right}
+.pb{width:42px;height:42px;border-radius:50%;border:0;background:linear-gradient(135deg,var(--a),var(--b));color:#fff;font-size:1.1rem;cursor:pointer}
+#toast{position:fixed;left:50%;bottom:150px;transform:translateX(-50%);background:#2b1838;border:1px solid var(--b);padding:11px 18px;border-radius:12px;opacity:0;pointer-events:none;transition:.3s;z-index:60;max-width:90%;text-align:center}
+#toast.on{opacity:1}
+dialog{background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:20px;max-width:560px;width:94%;max-height:92vh}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+dialog label{display:block;font-size:.82rem;color:var(--dim);margin:12px 0 5px}
+dialog input[type=text],dialog input[type=url],dialog textarea{width:100%;background:#0b0610;color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:11px;font:inherit}
+dialog input[type=file]{width:100%;color:var(--dim)}
+.hint{font-size:.78rem;color:var(--dim);margin-top:5px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:600px){.pl .t{flex-basis:90px}.pl .tm{display:none}}
+.promo{display:flex;align-items:stretch;margin:26px 0 6px;border-radius:22px;overflow:hidden;background:linear-gradient(100deg,var(--b),var(--c));box-shadow:0 12px 40px rgba(255,61,129,.35);transition:.2s}
+.promo:hover{transform:scale(1.015)}
+.pimg{flex:0 0 42%;min-height:190px;background:#2a1240 center/cover no-repeat;display:grid;place-items:center;font-size:4rem}
+.pimg.has em{display:none}
+.ptxt{flex:1;padding:22px 20px;display:flex;flex-direction:column;justify-content:center;gap:10px;text-transform:uppercase}
+.ptxt b{font-size:clamp(1.6rem,5vw,2.8rem);line-height:1.05;font-weight:900}
+.ptxt span{font-weight:800;letter-spacing:.06em;font-size:clamp(.85rem,2.4vw,1.1rem)}
+.ptxt u{align-self:flex-start;text-decoration:none;background:#fff;color:var(--b);padding:11px 20px;border-radius:999px;font-weight:900}
+@media(max-width:600px){.promo{flex-direction:column}.pimg{flex-basis:200px}}
+.promo.p2{flex-direction:row-reverse;background:linear-gradient(100deg,var(--a),var(--b))}
+@media(max-width:600px){.promo.p2{flex-direction:column}}
+/* ---- visual chamativo ---- */
+@keyframes pu{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.65)}50%{transform:scale(1.07);box-shadow:0 0 0 12px rgba(255,255,255,0)}}
+@keyframes sw{0%{transform:translateX(-150%) skewX(-20deg)}60%,100%{transform:translateX(450%) skewX(-20deg)}}
+@keyframes bn{50%{transform:translateY(-10px) rotate(-6deg)}}
+@keyframes gw{50%{box-shadow:0 12px 60px rgba(255,61,129,.75)}}
+.promo{position:relative;border:2px solid rgba(255,255,255,.4);animation:gw 2.4s ease-in-out infinite}
+.promo::after{content:"";position:absolute;top:0;bottom:0;left:0;width:26%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.38),transparent);animation:sw 4.5s ease-in-out infinite;pointer-events:none}
+.ptxt b{text-shadow:0 4px 18px rgba(0,0,0,.35)}
+.ptxt u{animation:pu 1.6s ease-in-out infinite}
+.pimg em{display:inline-block;animation:bn 1.4s ease-in-out infinite}
+.bigplay{animation:pu 2s ease-in-out infinite}
+.logo i{animation:pulse 2s ease-in-out infinite}
+.tick{font-size:.95rem;border-top:1px solid rgba(255,255,255,.25);border-bottom:1px solid rgba(255,255,255,.25)}
+.hero h1{text-transform:uppercase;filter:drop-shadow(0 6px 24px rgba(255,61,129,.45))}
+h2{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900;letter-spacing:.02em}
+.card .play{animation:pu 2.4s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.promo,.promo::after,.ptxt u,.pimg em,.bigplay,.logo i,.card .play{animation:none!important}}
+.ytrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+.ytb{display:inline-flex;align-items:center;gap:10px;background:#f00;color:#fff;font-weight:900;text-transform:uppercase;letter-spacing:.04em;padding:13px 22px;border-radius:12px;box-shadow:0 8px 26px rgba(255,0,0,.45);animation:pu 1.8s ease-in-out infinite;transition:.15s}
+.ytb:hover{background:#d90000;transform:translateY(-2px)}
+.ytb i{font-style:normal;background:#fff;color:#f00;border-radius:8px;padding:2px 9px;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){.ytb{animation:none!important}}
+@keyframes pisca{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,61,129,.85),0 0 30px rgba(255,138,61,.9)}50%{transform:scale(1.14);box-shadow:0 0 0 18px rgba(255,61,129,0),0 0 56px rgba(255,61,129,1)}}
+@keyframes bl{50%{opacity:.25}}
+.bigplay,.tpl{animation:pisca 1s ease-in-out infinite!important}
+#top{position:sticky;top:62px;z-index:19;display:flex;align-items:center;justify-content:center;gap:14px;padding:8px 14px;background:linear-gradient(90deg,var(--b),var(--c));font-weight:900;text-transform:uppercase;letter-spacing:.05em;font-size:.95rem}
+.live{background:#f00;color:#fff;padding:3px 11px;border-radius:999px;font-size:.78rem;animation:bl 1s ease-in-out infinite}
+.tpl{width:54px;height:54px;border-radius:50%;border:0;background:#fff;color:var(--b);font-size:1.4rem;cursor:pointer}
+@media(prefers-reduced-motion:reduce){.bigplay,.tpl,.live{animation:none!important}}
+.vol{display:flex;align-items:center;gap:6px}
+.vol button{width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.18);color:#fff;font-size:1rem;font-weight:900;cursor:pointer;line-height:1;padding:0}
+.vol button:hover{background:rgba(255,255,255,.32)}
+.vol input[type=range]{width:90px;flex:none;accent-color:#fff}
+#bar .vol input[type=range]{accent-color:var(--b)}
+@media(max-width:600px){.vol input[type=range]{width:60px}#top{flex-wrap:wrap;gap:8px}}
+
+.grid{grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+.card{border-radius:14px}.card:hover{transform:translateY(-2px)}
+.cov{font-size:2rem}
+.play{right:6px;bottom:6px;width:34px;height:34px;font-size:.85rem}
+.del{left:5px;top:5px;padding:3px 6px;font-size:.7rem;border-radius:8px}
+.info{padding:7px 9px 9px;gap:3px}
+.info h4{font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sty{font-size:.66rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.info details{font-size:.7rem}.lyr{max-height:130px;font-size:.72rem}
+#bar{left:50%;right:auto;bottom:calc(12px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);width:min(94vw,400px);border:1px solid var(--line);border-radius:999px;padding:6px 12px;box-shadow:0 8px 28px rgba(0,0,0,.55)}
+#bar .pl{gap:8px}#bar .pb{width:32px;height:32px;font-size:.85rem;flex:none}
+#bar .pl .t{flex:1 1 auto;font-size:.8rem}
+#bar #sk,#bar .tm,#bar .vol .vr{display:none}
+#bar .vol{gap:4px}#bar .vol button{width:26px;height:26px;font-size:.8rem;background:rgba(255,255,255,.12)}
+.card.pasta .del{display:none}
+</style>
+</head>
+<body>
+<header><div class="w nav">
+  <a class="logo" href="#"><i>♪</i><span class="nm"></span></a>
+  <span class="sp"></span>
+  <button class="btn sec sm own" id="exp">⬇ Baixar site pronto</button>
+  <button class="btn sec sm own" id="ep">✎ Perfil</button>
+  <button class="btn sec sm" id="lock">🔒 Dono</button>
+</div></header>
+<a class="tick" id="tickA" target="_blank" rel="noopener" style="display:block"><div id="tick"></div></a>
+
+<div id="top" style="display:none"><span class="live">● AO VIVO</span><button class="tpl" id="tp" aria-label="Ouvir a rádio">▶</button><span>OUÇA A RÁDIO AGORA</span><div class="vol"><button class="vm" aria-label="Mudo">🔊</button><button class="vd" aria-label="Abaixar volume">−</button><input type="range" class="vr" min="0" max="100" value="100" aria-label="Volume"><button class="vu" aria-label="Aumentar volume">+</button></div></div>
+
+<main class="w">
+  <section class="hero">
+    <div class="notes" id="notes"></div>
+    <div class="avw"><div class="ava" id="ava"></div><button class="camb own" id="cam" title="Trocar foto">📷</button></div>
+    <div class="eq" id="eq"></div>
+    <h1 class="nm"></h1>
+    <button class="bigplay" id="bp" aria-label="Tocar músicas">▶</button>
+    <div class="ytrow">
+      <a class="ytb" id="yt1" href="#" target="_blank" rel="noopener"><i>▶</i> INSCREVA-SE NO CANAL</a>
+      <a class="ytb" id="yt2" href="#" target="_blank" rel="noopener"><i>▶</i> INSCREVA-SE NO 2º CANAL</a>
+    </div>
+  </section>
+
+  <a class="promo" id="promo" href="#" target="_blank" rel="noopener">
+    <div class="pimg" id="pimg"><em>💃🕺</em></div>
+    <div class="ptxt"><b>VAMOS DANÇAR!</b><span>SEGUE O CANAL E NÃO PERCA NENHUM LANÇAMENTO</span><u>▶ CLIQUE E SE INSCREVA</u></div>
+  </a>
+  <div class="own" style="margin:8px 0"><button class="btn sec sm" id="pfoto">📷 Trocar foto da propaganda</button></div>
+
+  <a class="promo p2" id="promo2" href="#" target="_blank" rel="noopener">
+    <div class="pimg" id="pimg2"><em>🎧🔥</em></div>
+    <div class="ptxt"><b>SOM QUE ENVOLVE!</b><span>CONHEÇA TAMBÉM O MEU OUTRO CANAL</span><u>▶ CLIQUE E SE INSCREVA</u></div>
+  </a>
+  <div class="own" style="margin:8px 0"><button class="btn sec sm" id="pfoto2">📷 Trocar foto da propaganda 2</button></div>
+
+  <div class="hr" id="musicas"><h2>Músicas</h2><span class="sp"></span><button class="btn sm own" id="add1">🔗 Colar link da música</button></div>
+  <div class="grid" id="grid"></div>
+</main>
+<footer>© <span id="ano"></span> <span class="nm"></span></footer>
+
+<button class="btn fab own" id="add2">🔗 Colar link</button>
+<div id="bar"><div class="pl"><button class="pb" id="pp">▶</button><div class="t" id="pt"></div><input type="range" id="sk" min="0" max="100" value="0"><div class="tm" id="tm">0:00 / 0:00</div><div class="vol"><button class="vm" aria-label="Mudo">🔊</button><button class="vd" aria-label="Abaixar volume">−</button><input type="range" class="vr" min="0" max="100" value="100" aria-label="Volume"><button class="vu" aria-label="Aumentar volume">+</button></div></div></div>
+<audio id="au" preload="none"></audio>
+<div id="toast"></div>
+
+<dialog id="dsong"><h3 style="margin-top:0">➕ Adicionar música</h3>
+  <label>🔗 Cole aqui o link da música do Suno</label>
+  <input type="url" id="s0" placeholder="https://suno.com/song/...">
+  <div class="row" style="margin-top:8px"><button class="btn sm" id="sbusca">Buscar título, capa e letra</button></div>
+  <div class="hint" id="shint0">Ele preenche o título, a capa, a letra e o áudio sozinho. Você pode corrigir antes de salvar.</div>
+  <label>Se a letra não veio: abra a música no Suno, aperte Ctrl+A e Ctrl+C, e cole tudo aqui</label>
+  <textarea id="spaste" rows="3"></textarea>
+  <div class="row" style="margin-top:8px"><button class="btn sm sec" id="slerr">Pegar a letra do texto colado</button></div>
+  <label>Título</label><input type="text" id="s1">
+  <label>Estilo (opcional)</label><input type="text" id="s2">
+  <label>Link da música (.mp3). Pode colar o do seu computador (file:///...)</label><input type="url" id="s4">
+  <label>ou escolha um arquivo MP3 do seu computador</label><input type="file" id="s3" accept="audio/*,.mp3,.wav,.m4a">
+  <label>Link da capa (vem preenchido pelo Suno)</label><input type="url" id="s7">
+  <label>ou escolha uma imagem de capa</label><input type="file" id="s5" accept="image/*">
+  <label>Letra</label><textarea id="s6" rows="6"></textarea>
+  <div class="row" style="margin-top:16px"><button class="btn" id="ssave">Salvar música</button><button class="btn sec" id="sclose">Fechar</button></div>
+  <div class="hint" id="shint"></div>
+</dialog>
+
+<dialog id="dprof"><h3 style="margin-top:0">✎ Perfil</h3>
+  <label>Nome do site</label><input type="text" id="p1">
+  <label>Texto que fica passando no topo</label><input type="text" id="p2">
+  <label>Link do seu canal do YouTube</label><input type="url" id="p3" placeholder="https://www.youtube.com/@seucanal">
+  <label>Link do segundo canal do YouTube</label><input type="url" id="p4">
+  <label>Link da rádio ao vivo (o play grande toca essa rádio)</label><input type="url" id="p5" placeholder="https://stream.zeno.fm/...">
+  <div class="row" style="margin-top:16px"><button class="btn" id="psave">Salvar</button><button class="btn sec" id="pclose">Fechar</button></div>
+</dialog>
+<input type="file" id="pfile" accept="image/*" style="display:none">
+<input type="file" id="pfile2" accept="image/*" style="display:none">
+<input type="file" id="photo" accept="image/*" style="display:none">
+
+<script src="musicas.js"></script>
+<script>
+var CONFIG=/*CFG*/{nome:"Tubemakers Records",tick:"SEGUE O CANAL NO YOUTUBE ✦ ATIVE O SININHO ✦ SE INSCREVA ✦",youtube:"https://www.youtube.com/channel/UCdiaVw-WcYkHYhwYPK_nZ2g",youtube2:"https://www.youtube.com/channel/UCd7NVuJIsvR1aNUczTbUcRQ",radio:"https://stream.zeno.fm/u9pban4ervdvv"}/*ENDCFG*/;var PUB=/*PUB*/[]/*END*/;
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+  function toast(t){var e=$("toast");e.textContent=t;e.className="on";clearTimeout(toast.t);toast.t=setTimeout(function(){e.className=""},3400);}
+  function lsGet(k,d){try{var v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}}
+  function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+  function sub(u){u=u||"";return u+(u.indexOf("?")<0?"?":"&")+"sub_confirmation=1"}
+
+  /* ---- arquivos no navegador ---- */
+  var db;
+  function idb(){return new Promise(function(res,rej){if(db)return res(db);var r=indexedDB.open("tkr",1);r.onupgradeneeded=function(){r.result.createObjectStore("f")};r.onsuccess=function(){db=r.result;res(db)};r.onerror=function(){rej(r.error)}})}
+  function put(k,v){return idb().then(function(d){return new Promise(function(res,rej){var t=d.transaction("f","readwrite");t.objectStore("f").put(v,k);t.oncomplete=res;t.onerror=function(){rej(t.error)}})})}
+  function get(k){return idb().then(function(d){return new Promise(function(res,rej){var q=d.transaction("f").objectStore("f").get(k);q.onsuccess=function(){res(q.result)};q.onerror=function(){rej(q.error)}})})}
+  function del(k){return idb().then(function(d){return new Promise(function(res){var t=d.transaction("f","readwrite");t.objectStore("f").delete(k);t.oncomplete=res})})}
+
+  /* ---- enfeites ---- */
+  var nh="";for(var i=0;i<9;i++)nh+="<span style=\"left:"+(6+i*11)+"%;animation-delay:"+(i*0.8)+"s\">"+(i%2?"♪":"♫")+"</span>";$("notes").innerHTML=nh;
+  var eh="";for(var j=0;j<22;j++)eh+="<i style=\"animation-delay:"+(j*0.07).toFixed(2)+"s;animation-duration:"+(0.7+(j%5)*0.15).toFixed(2)+"s\"></i>";$("eq").innerHTML=eh;
+
+  /* ---- modo dono (senha) ---- */
+  function hash(s){var h=5381;for(var i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0;return String(h)}
+  function setOwner(on){document.body.classList.toggle("owner",on);$("lock").textContent=on?"🔓 Sair do modo dono":"🔒 Dono";try{sessionStorage.setItem("tkr_own",on?"1":"")}catch(e){}}
+  $("lock").onclick=function(){
+    if(document.body.classList.contains("owner")){setOwner(false);toast("Modo dono desligado.");return;}
+    var h=lsGet("tkr_pin","");
+    if(!h){var n=prompt("Crie uma senha de dono (guarde bem):");if(!n)return;lsSet("tkr_pin",hash(n));setOwner(true);toast("Senha criada. Modo dono ligado.");return;}
+    var p=prompt("Senha de dono:");if(p===null)return;
+    if(hash(p)===h){setOwner(true);toast("Modo dono ligado.");}else toast("Senha errada.");
+  };
+  try{if(sessionStorage.getItem("tkr_own"))setOwner(true);}catch(e){}
+
+  /* ---- perfil ---- */
+  var prof=Object.assign({},CONFIG,lsGet("tkr_prof",{})),photoUrl="";if(!prof.radio)prof.radio=CONFIG.radio;
+  function applyProf(){
+    Array.prototype.forEach.call(document.querySelectorAll(".nm"),function(e){e.textContent=prof.nome});
+    document.title=prof.nome;$("ano").textContent=new Date().getFullYear();
+    var t=esc(prof.tick||CONFIG.tick);$("tick").innerHTML=t+" &nbsp; "+t+" &nbsp; "+t;
+    $("top").style.display=prof.radio?"flex":"none";$("tickA").href=sub(prof.youtube);$("yt1").href=sub(prof.youtube);$("yt2").href=sub(prof.youtube2||CONFIG.youtube2);
+    $("ava").innerHTML=photoUrl?"<img src=\""+photoUrl+"\" alt=\"\">":"<em>🎤</em>";
+    $("promo").href=sub(prof.youtube);$("pimg").style.backgroundImage=prof.promoFoto?"url("+prof.promoFoto+")":"";$("pimg").className=prof.promoFoto?"pimg has":"pimg";
+    $("promo2").href=sub(prof.youtube2||CONFIG.youtube2);$("pimg2").style.backgroundImage=prof.promoFoto2?"url("+prof.promoFoto2+")":"";$("pimg2").className=prof.promoFoto2?"pimg has":"pimg";
+  }
+  get("foto").then(function(b){if(b){photoUrl=URL.createObjectURL(b);applyProf()}}).catch(function(){});
+  applyProf();
+  $("ep").onclick=function(){$("p1").value=prof.nome;$("p2").value=prof.tick||CONFIG.tick;$("p3").value=prof.youtube;$("p4").value=prof.youtube2||CONFIG.youtube2;$("p5").value=prof.radio||"";$("dprof").showModal()};
+  $("pclose").onclick=function(){$("dprof").close()};
+  $("psave").onclick=function(){prof={nome:$("p1").value.trim()||CONFIG.nome,tick:$("p2").value.trim()||CONFIG.tick,youtube:$("p3").value.trim()||CONFIG.youtube,promoFoto:prof.promoFoto,promoFoto2:prof.promoFoto2,youtube2:$("p4").value.trim()||CONFIG.youtube2,radio:$("p5").value.trim()||CONFIG.radio};lsSet("tkr_prof",prof);applyProf();$("dprof").close();toast("Salvo!")};
+  $("pfoto").onclick=function(){$("pfile").click()};
+  $("pfile").onchange=function(){var f=this.files[0];if(!f)return;var im=new Image();
+    im.onload=function(){var W=800,H=700,c=document.createElement("canvas");c.width=W;c.height=H;var r=Math.max(W/im.width,H/im.height),w=im.width*r,h=im.height*r;
+      c.getContext("2d").drawImage(im,(W-w)/2,(H-h)/2,w,h);prof.promoFoto=c.toDataURL("image/jpeg",.82);lsSet("tkr_prof",prof);applyProf();toast("Foto trocada! Baixe o site pronto para valer para todos.")};
+    im.src=URL.createObjectURL(f);this.value=""};
+  $("pfoto2").onclick=function(){$("pfile2").click()};
+  $("pfile2").onchange=function(){var f=this.files[0];if(!f)return;var im=new Image();
+    im.onload=function(){var W=800,H=700,c=document.createElement("canvas");c.width=W;c.height=H;var r=Math.max(W/im.width,H/im.height),w=im.width*r,h=im.height*r;
+      c.getContext("2d").drawImage(im,(W-w)/2,(H-h)/2,w,h);prof.promoFoto2=c.toDataURL("image/jpeg",.82);lsSet("tkr_prof",prof);applyProf();toast("Foto 2 trocada! Baixe o site pronto para valer para todos.")};
+    im.src=URL.createObjectURL(f);this.value=""};
+  $("cam").onclick=function(){$("photo").click()};
+  $("photo").onchange=function(){
+    var f=this.files[0];if(!f)return;var im=new Image();
+    im.onload=function(){var s=420,c=document.createElement("canvas");c.width=c.height=s;var m=Math.min(im.width,im.height);c.getContext("2d").drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,s,s);
+      c.toBlob(function(b){put("foto",b).then(function(){photoUrl=URL.createObjectURL(b);applyProf();toast("Foto trocada!")}).catch(function(){toast("Não consegui salvar a foto.")})},"image/jpeg",.9)};
+    im.src=URL.createObjectURL(f);
+  };
+
+  /* ---- músicas ---- */
+  var songs=lsGet("tkr_songs",null),urls={},cur=-1;if(!songs)songs=PUB.slice();
+  var FD=(window.MUSICAS||[]).map(function(m,i){return {id:"f"+i,titulo:m.titulo,estilo:"",letra:"",audio:m.audio,capa:m.capa||"",pasta:1}});
+  songs=FD.concat(songs.filter(function(x){return !x.pasta}));
+  function loadUrls(){var ks=[];songs.forEach(function(s){if(s.aKey)ks.push(s.aKey);if(s.cKey)ks.push(s.cKey)});
+    return Promise.all(ks.map(function(k){if(urls[k])return 0;return get(k).then(function(b){if(b)urls[k]=URL.createObjectURL(b)}).catch(function(){})}))}
+  function srcOf(s){return s.aKey?urls[s.aKey]:s.audio}
+  function draw(){
+    var g=$("grid");g.innerHTML="";
+    if(!songs.length){g.innerHTML="<div class=\"empty\">🎶<br>Nenhuma música ainda.</div>";return}
+    songs.forEach(function(s,i){
+      var cover=s.cKey?urls[s.cKey]:s.capa,d=document.createElement("div");d.className="card"+(s.id===cur?" now":"")+(s.pasta?" pasta":"");
+      d.innerHTML="<div class=\"cov\">🎵"+(cover?"<img src=\""+esc(cover)+"\" alt=\"\" onerror=\"this.remove()\">":"")+"<button class=\"del own\" data-d=\""+i+"\" title=\"Apagar\">🗑</button><button class=\"play\" data-i=\""+i+"\" aria-label=\"Tocar\">"+(s.id===cur&&!au.paused?"❚❚":"▶")+"</button></div>"+
+      "<div class=\"info\"><h4>"+esc(s.titulo)+"</h4>"+(s.estilo?"<div class=\"sty\">"+esc(s.estilo)+"</div>":"")+(s.letra?"<details><summary>Ver letra</summary><div class=\"lyr\">"+esc(s.letra)+"</div></details>":"")+"</div>";
+      g.appendChild(d);
+    });
+  }
+  var au=$("au");
+  function playIdx(i){
+    var s=songs[i];if(!s)return;var src=srcOf(s);
+    if(!src){toast("Essa música está sem áudio.");return}
+    if(cur===s.id){au.paused?au.play():au.pause();return}
+    cur=s.id;au.src=src;$("pt").textContent=s.titulo;$("bar").className="on";
+    au.play().catch(function(){toast("Não consegui tocar. Confira o arquivo ou o link.")});draw();
+  }
+  loadUrls().then(draw);
+
+  /* ---- importar do Suno ---- */
+  var PROX=["https://api.allorigins.win/raw?url=","https://corsproxy.io/?url="];
+  function jstr(s){try{return JSON.parse("\""+s+"\"")}catch(e){return s}}
+  function parseSuno(html){
+    var r={},m=html.match(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']*)["']/i)||html.match(/<meta[^>]+content=["']([^"']*)["'][^>]+property=["']og:title["']/i);
+    if(m)r.titulo=new DOMParser().parseFromString(m[1],"text/html").documentElement.textContent;
+    var best="",re=/"prompt":"((?:[^"\\]|\\.)*)"/g,x;
+    while((x=re.exec(html))){var t=jstr(x[1]);if(t.indexOf("[")>-1&&t.length>best.length)best=t}
+    var tg=html.match(/"tags":"((?:[^"\\]|\\.)*)"/);if(tg)r.estilo=jstr(tg[1]);
+    if(!best){
+      var doc=new DOMParser().parseFromString(html.replace(/<br\s*\/?>/gi,"\n"),"text/html");
+      doc.querySelectorAll("div,p,pre,span").forEach(function(e){var t=e.textContent;if(t.indexOf("[Verse")>-1&&t.split("\n").length>6&&t.length<9000&&(!best||t.length<best.length))best=t});
+    }
+    if(best)r.letra=best.trim();
+    return r;
+  }
+  $("sbusca").onclick=async function(){
+    var u=$("s0").value.trim(),m=u.match(/suno\.com\/song\/([0-9a-f-]{36})/i),h=$("shint0");
+    if(!m){h.textContent=/suno\.com\/s\//i.test(u)?"Esse é um link curto. Abra a música no Suno, clique em Share e copie o link que tem /song/ no meio.":"Cole o link da música do Suno (suno.com/song/...).";return}
+    var id=m[1];$("s4").value="https://cdn1.suno.ai/"+id+".mp3";$("s7").value="https://cdn2.suno.ai/image_large_"+id+".jpeg";
+    h.textContent="Buscando título e letra…";var got=null;
+    for(var k=0;k<PROX.length&&!got;k++){
+      try{var c=new AbortController(),to=setTimeout(function(){c.abort()},14000);
+        var r=await fetch(PROX[k]+encodeURIComponent("https://suno.com/song/"+id),{signal:c.signal});clearTimeout(to);
+        if(r.ok){var p=parseSuno(await r.text());if(p.titulo||p.letra)got=p}}catch(e){}
+    }
+    if(got){if(got.titulo)$("s1").value=got.titulo;if(got.estilo&&!$("s2").value)$("s2").value=got.estilo;if(got.letra)$("s6").value=got.letra;
+      h.textContent="Pronto! Veja se está tudo certo."+(got.letra?"":" A letra não veio, cole ela no campo Letra.")}
+    else h.textContent="Peguei a capa e o áudio. Título e letra não vieram (internet ou bloqueio). Escreva o título e cole a letra.";
+  };
+
+  /* ---- adicionar ---- */
+  function openAdd(){["s0","s1","s2","s4","s6","s7"].forEach(function(k){$(k).value=""});$("s3").value="";$("s5").value="";$("shint").textContent="";$("shint0").textContent="Ele preenche o título, a capa, a letra e o áudio sozinho. Você pode corrigir antes de salvar.";$("dsong").showModal()}
+  $("add1").onclick=openAdd;$("add2").onclick=openAdd;$("sclose").onclick=function(){$("dsong").close()};
+  function fixLink(l,dir){
+    if(!/^file:/i.test(l))return l;
+    var n=l.split("?")[0].split("/").pop();try{n=decodeURIComponent(n)}catch(e){}
+    var m=n.match(/\.[a-z0-9]+$/i),ext=m?m[0].toLowerCase():(dir==="capas"?".jpg":".mp3");
+    var b=n.replace(/\.[a-z0-9]+$/i,"").normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+    return dir+"/"+b+ext;
+  }
+  $("ssave").onclick=async function(){
+    var t=$("s1").value.trim(),f=$("s3").files[0],link=$("s4").value.trim(),cv=$("s5").files[0];
+    if(!t){toast("Coloque o título.");return}
+    if(!f&&!link){toast("Cole o link do Suno e toque em Buscar, ou escolha um MP3.");return}
+    var id=Date.now(),s={id:id,titulo:t,estilo:$("s2").value.trim(),letra:$("s6").value,audio:fixLink(link,"musicas"),capa:fixLink($("s7").value.trim(),"capas")};
+    $("ssave").disabled=true;$("shint").textContent="Salvando…";
+    try{
+      if(f){await put("a"+id,f);s.aKey="a"+id;s.audio=""}
+      if(cv){await put("c"+id,cv);s.cKey="c"+id}
+      songs.unshift(s);lsSet("tkr_songs",songs);await loadUrls();draw();
+      $("dsong").close();toast(/^file:/i.test(link)?"Música adicionada! Ponha o arquivo na pasta musicas do GitHub.":"Música adicionada!");$("musicas").scrollIntoView();
+    }catch(e){$("shint").textContent="Não consegui salvar. Tente no Chrome."}
+    $("ssave").disabled=false;
+  };
+
+
+  /* ---- letra a partir do texto colado do Suno ---- */
+  $("slerr").onclick=function(){
+    var t=$("spaste").value,i=t.search(/\[(Intro|Verse|Chorus|Verso|Refr)/i);
+    if(i<0)i=t.indexOf("[");
+    if(i<0){toast("Não achei a letra nesse texto.");return}
+    var r=t.slice(i),e=r.search(/\n\s*\d+\s*\/\s*\d+\s*(\n|$)/);
+    if(e>-1)r=r.slice(0,e);
+    var k=r.indexOf("[End]");if(k>-1)r=r.slice(0,k+5);
+    $("s6").value=r.trim();toast("Letra colocada! Escreva o título.");
+  };
+
+  /* ---- baixar o site pronto (com as músicas dentro) ---- */
+  function exportar(){
+    var pub=songs.filter(function(s){return !s.pasta&&!s.aKey&&s.audio}).map(function(s){return {id:s.id,titulo:s.titulo,estilo:s.estilo||"",letra:s.letra||"",audio:s.audio,capa:s.capa||""}});
+    var fora=songs.filter(function(x){return !x.pasta}).length-pub.length;
+    var c=document.documentElement.cloneNode(true),b=c.querySelector("body");
+    b.classList.remove("owner");if(!b.getAttribute("class"))b.removeAttribute("class");
+    c.querySelector("#bar").className="";c.querySelector("#toast").className="";
+    Array.prototype.forEach.call(c.querySelectorAll("dialog"),function(d){d.removeAttribute("open")});
+    var h="<!DOCTYPE html>\n"+c.outerHTML;
+    h=h.replace(/\/\*CFG\*\/[\s\S]*?\/\*ENDCFG\*\//,function(){return "/*CFG*/"+JSON.stringify(prof).replace(/</g,"\\u003c")+"/*ENDCFG*/"});
+    h=h.replace(/\/\*PUB\*\/[\s\S]*?\/\*END\*\//,function(){return "/*PUB*/"+JSON.stringify(pub).replace(/</g,"\\u003c")+"/*END*/"});
+    var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([h],{type:"text/html"}));a.download="index.html";
+    document.body.appendChild(a);a.click();a.remove();
+    toast("Baixei o index.html com "+pub.length+" música(s)."+(fora?" "+fora+" com arquivo do computador ficaram de fora: use link.":""));
+  }
+  $("exp").onclick=exportar;
+
+  /* ---- player ---- */
+  function fmt(t){t=Math.floor(t||0);return Math.floor(t/60)+":"+("0"+t%60).slice(-2)}
+  $("grid").onclick=function(e){
+    var dl=e.target.closest(".del");
+    if(dl){var i=+dl.getAttribute("data-d"),s=songs[i];if(!confirm("Apagar a música “"+s.titulo+"”?"))return;
+      if(s.aKey)del(s.aKey);if(s.cKey)del(s.cKey);if(cur===s.id){au.pause();au.removeAttribute("src");$("bar").className="";cur=-1}
+      songs.splice(i,1);lsSet("tkr_songs",songs);draw();return}
+    var b=e.target.closest(".play");if(b)playIdx(+b.getAttribute("data-i"));
+  };
+  function playRadio(){
+    if(cur==="radio"){au.paused?au.play():au.pause();return}
+    cur="radio";au.src=prof.radio;$("pt").textContent="📻 Rádio ao vivo";$("bar").className="";
+    au.play().catch(function(){toast("Não consegui abrir a rádio. Confira o link no Perfil.")});draw();
+  }
+  $("bp").onclick=function(){
+    if(prof.radio){playRadio();return}
+    if(!songs.length){toast("Ainda não tem músicas.");return}
+    var i=songs.findIndex(function(s){return s.id===cur});
+    if(i<0)playIdx(0);else au.paused?au.play():au.pause();
+  };
+  $("tp").onclick=function(){$("bp").click()};
+  $("pp").onclick=function(){if(au.getAttribute("src"))au.paused?au.play():au.pause()};
+  au.onplay=function(){$("pp").textContent="❚❚";$("bp").textContent="❚❚";$("tp").textContent="❚❚";draw()};
+  au.onpause=function(){$("pp").textContent="▶";$("bp").textContent="▶";$("tp").textContent="▶";draw()};
+  au.onended=function(){var i=songs.findIndex(function(s){return s.id===cur});for(var k=i+1;k<songs.length;k++){if(srcOf(songs[k])){cur=-1;playIdx(k);return}}};
+  au.ontimeupdate=function(){$("sk").value=au.duration?au.currentTime/au.duration*100:0;$("tm").textContent=isFinite(au.duration)?fmt(au.currentTime)+" / "+fmt(au.duration):"AO VIVO"};
+  $("sk").oninput=function(){if(au.duration)au.currentTime=au.duration*this.value/100};
+  au.onerror=function(){if(au.getAttribute("src"))toast(cur==="radio"?"A rádio não respondeu. Veja se ela está no ar na Zeno.":"Esse áudio não abriu. Use um link .mp3 direto ou escolha o arquivo.")};
+
+  (function(){
+    var v=1,muted=false;try{var sv=parseFloat(localStorage.getItem("tkr_vol"));if(!isNaN(sv))v=Math.min(1,Math.max(0,sv))}catch(e){}
+    function paint(){
+      au.volume=v;au.muted=muted;
+      var ic=(muted||v===0)?"🔇":(v<.5?"🔉":"🔊");
+      document.querySelectorAll(".vr").forEach(function(r){r.value=Math.round(v*100)});
+      document.querySelectorAll(".vm").forEach(function(b){b.textContent=ic});
+      try{localStorage.setItem("tkr_vol",v)}catch(e){}
+    }
+    function set(n){v=Math.min(1,Math.max(0,n));muted=false;paint()}
+    document.querySelectorAll(".vol").forEach(function(w){
+      w.querySelector(".vu").onclick=function(){set(Math.round((v+.1)*10)/10)};
+      w.querySelector(".vd").onclick=function(){set(Math.round((v-.1)*10)/10)};
+      w.querySelector(".vm").onclick=function(){muted=!muted;paint()};
+      w.querySelector(".vr").oninput=function(){set(this.value/100)};
+    });
+    paint();
+  })();
+})();
+</script>
+</body>
+</html>
